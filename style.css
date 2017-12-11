@@ -1,0 +1,189 @@
+#swamp {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding-top: 25px;
+}
+
+@keyframes ribbit {
+  0% {
+    transform: scale(1.2, 1.2);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1.2, 1.2);
+  }
+}
+
+@-webkit-keyframes ribbit {
+  0% {
+    -webkit-transform: scale(1.2, 1.2);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+  }
+}
+
+.frog {
+  margin: 0px auto;
+  z-index: 2;
+  width: 125px;
+  -webkit-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  -moz-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+}
+
+.frog .head {
+  position: relative;
+  z-index: 1;
+  width: 125px;
+  height: 75px;
+  background: #4F694F;
+  border-radius: 100%;
+}
+
+.frog .left {
+  float: left;
+}
+
+.frog .right {
+  float: right;
+}
+
+.frog .eye {
+  background: #edd7ac;
+  border: 5px solid #4f694f;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: relative;
+  top: -15px;
+}
+
+.frog .eye .inner {
+  position: relative;
+  background: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 100% 100% 100% 100%;
+}
+
+.frog .nose {
+  position: relative;
+  background: #607860;
+  border-radius: 100%;
+  top: 25px;
+  left: 50px;
+  width: 10px;
+  height: 10px;
+}
+
+.frog .nose:after {
+  content: "";
+  position: absolute;
+  background: #607860;
+  border-radius: 100%;
+  left: 18px;
+  width: 10px;
+  height: 10px;
+}
+
+.frog .mouth {
+  width: 125px;
+  height: 50px;
+  border-bottom: 2px solid #607860;
+  border-radius: 100%;
+  position: relative;
+  top: -15px;
+}
+
+.frog .body {
+  position: relative;
+  top: -10px;
+  width: 125px;
+  height: 80px;
+  background: #4F694F;
+  border-radius: 100%;
+  animation: ribbit 7s infinite;
+  -webkit-animation: ribbit 7s infinite;
+  -moz-animation: ribbit 7s infinite;
+}
+
+.frog .body:after {
+  position: absolute;
+  content: "";
+  background: #edd7ac;
+  height: 66px;
+  width: 83px;
+  border-radius: 100%;
+  left: 21px;
+}
+
+.frog .toes {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes:before {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes:after {
+  position: absolute;
+  left: -20px;
+  bottom: 10px;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes.left {
+  -webkit-transform: rotate(33deg) !important;
+  -ms-transform: rotate(33deg) !important;
+  -moz-transform: rotate(33deg) !important;
+  transform: rotates(33deg) !important;
+  top: -17px;
+}
+
+.frog .toes.right {
+  -webkit-transform: rotate(-33deg) !important;
+  -ms-transform: rotate(-33deg) !important;
+  -moz-transform: rotate(-33deg) !important;
+  transform: rotates(-33deg) !important;
+  top: -17px;
+}
+
+.frog,
+.frog .head,
+.frog .eye,
+.frog .eye .inner,
+.frog .nose,
+.frog .nose:after,
+.frog .mouth,
+.frog .body,
+.frog .body:after,
+.frog .toes,
+.frog .toes:before,
+.frog .toes:after {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  /* Safari */
+}
