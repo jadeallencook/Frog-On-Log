@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="style.css">
 
 <div id="swamp">
-  <div class="frog">
+  <div class="frog" id="frog">
     <div class="head">
       <div id="eye1" class="eye left">
         <div id="pupil1" class="inner"></div>
@@ -16,4 +16,62 @@
     <div class="toes left"></div>
     <div class="toes right"></div>
   </div>
+  <div class="log"></div>
 </div>
+
+<script>
+  (function () {
+    // build vars
+    var mouseOverFrog = false;
+    var exercisePlaying = false;
+    var audio = new Audio('audio/exercise.mp3');
+    // event listener for mouse
+    document.onmousemove = function (event) {
+      // build vars
+      var mouse = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      var screenWidth = window.innerWidth,
+        distanceFromTop = document.getElementById('swamp').offsetTop + 150;
+      if (mouseOverFrog) {
+        document.getElementById('pupil1').style.marginLeft = '10px';
+        document.getElementById('pupil2').style.marginLeft = '10px';
+        document.getElementById('pupil1').style.marginTop = '10px';
+        document.getElementById('pupil2').style.marginTop = '10px';
+      } else {
+        // set side to side
+        if (mouse.x > (screenWidth / 2)) {
+          document.getElementById('pupil1').style.marginLeft = '20px';
+          document.getElementById('pupil2').style.marginLeft = '20px';
+        } else if (mouse.x < (screenWidth / 2)) {
+          document.getElementById('pupil1').style.marginLeft = '0px';
+          document.getElementById('pupil2').style.marginLeft = '0px';
+        }
+        // set vertical
+        if (mouse.y < distanceFromTop) {
+          document.getElementById('pupil1').style.marginTop = '0px';
+          document.getElementById('pupil2').style.marginTop = '0px';
+        } else if (mouse.y > distanceFromTop) {
+          document.getElementById('pupil1').style.marginTop = '20px';
+          document.getElementById('pupil2').style.marginTop = '20px';
+        }
+      }
+    }
+    document.getElementById('frog').onmouseover = function () {
+      mouseOverFrog = true;
+    }
+    document.getElementById('frog').onmouseout = function () {
+      mouseOverFrog = false;
+    }
+    document.getElementById('frog').addEventListener('click', function () {
+      if (!exercisePlaying) {
+        exercisePlaying = true;
+        audio.play();
+      } else {
+        exercisePlaying = false;
+        audio.pause();
+      }
+    });
+  })();
+</script>
