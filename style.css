@@ -173,10 +173,11 @@
 }
 
 div#swamp div.log {
-  height: 50px;
-  width: 250px;
-  background-color: #53351F;
-  margin: -50px auto 0px auto;
+  height: 100px;
+  width: 400px;
+  background-image: url('log.png');
+  background-size: cover;
+  margin: -75px auto 0px auto;
 }
 
 .frog,
