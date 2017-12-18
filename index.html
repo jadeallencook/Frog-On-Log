@@ -1,6 +1,26 @@
 <link rel="stylesheet" href="style.css">
 
+<div id="meditation-menu">
+  <div class="frog">
+    <div class="head">
+      <div id="eye1" class="eye left">
+        <div class="inner"></div>
+      </div>
+      <div id="eye2" class="eye right">
+        <div class="inner"></div>
+      </div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+  <h1>Can you sit still?</h1>
+  <p>Some schools are teaching mindfulness to help kids learn about themselves. Try this excercise to see how mindfulness can
+    help you too!</p>
+  <div id="start-meditation">Start Meditation</div>
+</div>
+
 <div id="swamp">
+  <h1 id="meditation-msg">Loading...</h1>
   <div class="frog" id="frog">
     <div class="head">
       <div id="eye1" class="eye left">
@@ -17,23 +37,90 @@
     <div class="toes right"></div>
   </div>
   <div class="log"></div>
+  <p id="close-meditation">Click Here To Return To Article</p>
 </div>
 
 <script>
   (function () {
     // build vars
     var mouseOverFrog = false;
-    var exercisePlaying = false;
-    var audio = new Audio('audio/exercise.mp3');
+    var frog = {
+      x: document.getElementById('frog').offsetLeft,
+      y: document.getElementById('frog').offsetTop
+    };
+    var messages = [
+      'Practice breathing through your belly...',
+      'Follow the pace of the frog...',
+      'Pay attention to how your body feels...'
+    ];
+    var messageAnimation;
+    currentMessage = 0;
+    fadeOut = true;
+    count = 0;
+    // track frog position
+    document.onscroll = function () {
+      frog.x = document.getElementById('frog').offsetLeft;
+      frog.y = document.getElementById('frog').offsetTop
+    }
+    // start meditation btn 
+    document.getElementById('start-meditation').onclick = function () {
+      count = 0;
+      currentMessage = 0;
+      document.getElementById('meditation-msg').innerText = messages[currentMessage];
+      document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+      document.getElementById('meditation-menu').style.display = 'none';
+      document.getElementById('swamp').style.display = 'block';
+      messageAnimation = setInterval(function () {
+        document.getElementById('meditation-msg').style.color = '#000';
+        if (fadeOut) {
+          fadeOut = false;
+          document.getElementById('meditation-msg').style.animation = 'fadeOut 3s normal forwards ease-in-out';
+        } else {
+          fadeOut = true;
+          currentMessage++;
+          if (currentMessage === messages.length) {
+            clearInterval(messageAnimation);
+            var counting = setInterval(function () {
+              count++;
+            }, 1000);
+            document.getElementById('meditation-msg').style.color = '#fff';
+            document.getElementById('meditation-msg').innerText = 'Breathe...';
+            document.getElementById('swamp').onmousemove = function () {
+              clearInterval(counting);
+              document.getElementById('meditation-msg').style.color = '#000';
+              document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+              if (count < 3) {
+                document.getElementById('meditation-msg').innerText = 'Maybe next time, there\'s no hurry...';
+              } else if (count > 3 && count < 30) {
+                document.getElementById('meditation-msg').innerText = 'You sat still for ' + count +
+                  ' seconds, good try!';
+              } else {
+                document.getElementById('meditation-msg').innerText = 'You sat still for ' + count +
+                  ' seconds, awesome!';
+              }
+            }
+          } else {
+            document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+            document.getElementById('meditation-msg').innerText = messages[currentMessage];
+          }
+        }
+      }, 5000);
+    }
+
+    document.getElementById('close-meditation').onclick = function () {
+      document.getElementById('meditation-menu').style.display = 'block';
+      document.getElementById('swamp').style.display = 'none';
+      document.getElementById('swamp').onmousemove = undefined;
+    }
     // event listener for mouse
     document.onmousemove = function (event) {
+      frog.x = document.getElementById('frog').offsetLeft;
+      frog.y = document.getElementById('frog').offsetTop;
       // build vars
       var mouse = {
         x: event.clientX,
         y: event.clientY
       };
-      var screenWidth = window.innerWidth,
-        distanceFromTop = document.getElementById('swamp').offsetTop + 150;
       if (mouseOverFrog) {
         document.getElementById('pupil1').style.marginLeft = '10px';
         document.getElementById('pupil2').style.marginLeft = '10px';
@@ -41,18 +128,18 @@
         document.getElementById('pupil2').style.marginTop = '10px';
       } else {
         // set side to side
-        if (mouse.x > (screenWidth / 2)) {
+        if (mouse.x > frog.x) {
           document.getElementById('pupil1').style.marginLeft = '20px';
           document.getElementById('pupil2').style.marginLeft = '20px';
-        } else if (mouse.x < (screenWidth / 2)) {
+        } else if (mouse.x < frog.x) {
           document.getElementById('pupil1').style.marginLeft = '0px';
           document.getElementById('pupil2').style.marginLeft = '0px';
         }
         // set vertical
-        if (mouse.y < distanceFromTop) {
+        if (mouse.y < frog.y) {
           document.getElementById('pupil1').style.marginTop = '0px';
           document.getElementById('pupil2').style.marginTop = '0px';
-        } else if (mouse.y > distanceFromTop) {
+        } else if (mouse.y > frog.y) {
           document.getElementById('pupil1').style.marginTop = '20px';
           document.getElementById('pupil2').style.marginTop = '20px';
         }
@@ -64,14 +151,5 @@
     document.getElementById('frog').onmouseout = function () {
       mouseOverFrog = false;
     }
-    document.getElementById('frog').addEventListener('click', function () {
-      if (!exercisePlaying) {
-        exercisePlaying = true;
-        audio.play();
-      } else {
-        exercisePlaying = false;
-        audio.pause();
-      }
-    });
   })();
 </script>

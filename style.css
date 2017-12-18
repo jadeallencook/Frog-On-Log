@@ -1,8 +1,52 @@
-#swamp {
+div#meditation-menu {
+  text-align: center;
+  width: 500px;
+  margin: 25px auto;
+}
+
+div#start-meditation {
+  background-color: #4F694F;
+  color: #fff;
   display: inline-block;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+div#meditation-menu h1,
+div#meditation-menu p {
+  margin: 0px;
+}
+
+div#start-meditation:hover {
+  opacity: 0.75;
+}
+
+#swamp {
+  display: none;
   width: 100%;
   text-align: center;
-  padding-top: 25px;
+  height: 100%;
+  position: absolute;
+  background-color: #fff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes ribbit {
@@ -37,7 +81,29 @@
   -ms-transform: scale(0.8, 0.8);
   -moz-transform: scale(0.8, 0.8);
   transform: scale(0.8, 0.8);
+}
+
+div#swamp h1,
+div#swamp p,
+div#swamp .frog,
+div#swamp .log {
+  position: relative;
+  top: 30%;
+  transform: translateY(-30%);
+}
+
+p#close-meditation {
+  color: cornflowerblue;
+  font-size: 0.75em;
   cursor: pointer;
+}
+
+div#swamp h1 {
+  opacity: 0;
+}
+
+div#swamp .frog {
+  margin-top: 100px;
 }
 
 .frog .head {
@@ -177,7 +243,7 @@ div#swamp div.log {
   width: 400px;
   background-image: url('log.png');
   background-size: cover;
-  margin: -75px auto 0px auto;
+  margin: -95px auto 0px auto;
 }
 
 .frog,
