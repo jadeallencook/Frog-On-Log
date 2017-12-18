@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://www.deseretnews.com/v4/dist/app.css?2535c0bc472ef97d02d9e45721a40807ef5ceac9">
 
 <div id="meditation-menu">
   <div class="frog">
@@ -37,7 +38,7 @@
     <div class="toes right"></div>
   </div>
   <div class="log"></div>
-  <p id="close-meditation">Click Here To Return To Article</p>
+  <p id="close-meditation">Return To Article</p>
 </div>
 
 <script>
@@ -89,7 +90,7 @@
               clearInterval(counting);
               document.getElementById('meditation-msg').style.color = '#000';
               document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
-              if (count < 3) {
+              if (count <= 3) {
                 document.getElementById('meditation-msg').innerText = 'Maybe next time, there\'s no hurry...';
               } else if (count > 3 && count < 30) {
                 document.getElementById('meditation-msg').innerText = 'You sat still for ' + count +

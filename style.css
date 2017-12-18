@@ -83,8 +83,12 @@ div#start-meditation:hover {
   transform: scale(0.8, 0.8);
 }
 
+div#swamp h1 {
+  font-size: 1.5em;
+}
+
 div#swamp h1,
-div#swamp p,
+div#swamp p#close-meditation,
 div#swamp .frog,
 div#swamp .log {
   position: relative;
@@ -96,6 +100,8 @@ p#close-meditation {
   color: cornflowerblue;
   font-size: 0.75em;
   cursor: pointer;
+  display: block;
+  white-space: nowrap;
 }
 
 div#swamp h1 {
