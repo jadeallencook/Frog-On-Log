@@ -14,8 +14,8 @@
       <div class="mouth"></div>
     </div>
   </div>
-  <h1>Can you sit still?</h1>
-  <p>Some schools are teaching mindfulness to help kids learn about themselves. Try this excercise to see how mindfulness can
+  <h1>Can you find your anchor breath?</h1>
+  <p>Some schools are teaching mindfulness to help kids calm down by finding their anchor breath, which is breathing through your belly. Try this excercise to see how mindfulness can
     help you too!</p>
   <div id="start-meditation">Start Meditation</div>
 </div>
@@ -90,15 +90,7 @@
               clearInterval(counting);
               document.getElementById('meditation-msg').style.color = '#000';
               document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
-              if (count <= 3) {
-                document.getElementById('meditation-msg').innerText = 'Maybe next time, there\'s no hurry...';
-              } else if (count > 3 && count < 30) {
-                document.getElementById('meditation-msg').innerText = 'You sat still for ' + count +
-                  ' seconds, good try!';
-              } else {
-                document.getElementById('meditation-msg').innerText = 'You sat still for ' + count +
-                  ' seconds, awesome!';
-              }
+              document.getElementById('meditation-msg').innerText = 'Did you find your anchor breath?';
             }
           } else {
             document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
