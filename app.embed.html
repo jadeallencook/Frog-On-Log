@@ -1,0 +1,420 @@
+<style>div#meditation-menu {
+  text-align: center;
+  margin: 25px auto;
+}
+
+div#start-meditation {
+  background-color: #4F694F;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 15px 7px 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+div#meditation-menu h1,
+div#meditation-menu p {
+  margin: 0px;
+}
+
+div#start-meditation:hover {
+  opacity: 0.75;
+}
+
+#swamp {
+  top: 0px;
+  left: 0px;
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: fixed;
+  background-color: #fff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ribbit {
+  0% {
+    transform: scale(1.3, 1.3);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1.3, 1.3);
+  }
+}
+
+@-webkit-keyframes ribbit {
+  0% {
+    -webkit-transform: scale(1.3, 1.3);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1.3, 1.3);
+  }
+}
+
+.frog {
+  margin: 0px auto;
+  z-index: 2;
+  width: 125px;
+  -webkit-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  -moz-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+}
+
+div#swamp h1 {
+  line-height: 1em;
+  font-size: 1.5em;
+}
+
+div#swamp h1,
+div#swamp p#close-meditation,
+div#swamp .frog,
+div#swamp .log {
+  position: relative;
+  top: 30%;
+  transform: translateY(-30%);
+}
+
+a#close-meditation {
+  margin-top: 275px;
+  color: cornflowerblue;
+  font-size: 0.75em;
+  cursor: pointer;
+  display: block;
+  white-space: nowrap;
+}
+
+div#swamp h1 {
+  opacity: 0;
+}
+
+div#swamp .frog {
+  margin-top: 100px;
+}
+
+.frog .head {
+  position: relative;
+  z-index: 1;
+  width: 125px;
+  height: 75px;
+  background: #4F694F;
+  border-radius: 100%;
+}
+
+.frog .left {
+  float: left;
+}
+
+.frog .right {
+  float: right;
+}
+
+.frog .eye {
+  background: #edd7ac;
+  border: 5px solid #4f694f;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: relative;
+  top: -15px;
+}
+
+.frog .eye .inner {
+  position: relative;
+  background: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 100% 100% 100% 100%;
+}
+
+.frog .nose {
+  position: relative;
+  background: #607860;
+  border-radius: 100%;
+  top: 25px;
+  left: 50px;
+  width: 10px;
+  height: 10px;
+}
+
+.frog .nose:after {
+  content: "";
+  position: absolute;
+  background: #607860;
+  border-radius: 100%;
+  left: 18px;
+  width: 10px;
+  height: 10px;
+}
+
+.frog .mouth {
+  width: 125px;
+  height: 50px;
+  border-bottom: 2px solid #607860;
+  border-radius: 100%;
+  position: relative;
+  top: -15px;
+}
+
+.frog .body {
+  position: relative;
+  top: -10px;
+  width: 125px;
+  height: 80px;
+  background: #4F694F;
+  border-radius: 100%;
+  animation: ribbit 7s infinite;
+  -webkit-animation: ribbit 7s infinite;
+  -moz-animation: ribbit 7s infinite;
+}
+
+.frog .body:after {
+  position: absolute;
+  content: "";
+  background: #edd7ac;
+  height: 66px;
+  width: 83px;
+  border-radius: 100%;
+  left: 21px;
+}
+
+.frog .toes {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes:before {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes:after {
+  position: absolute;
+  left: -20px;
+  bottom: 10px;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #edd7ac;
+  border-radius: 100%;
+}
+
+.frog .toes.left {
+  -webkit-transform: rotate(33deg) !important;
+  -ms-transform: rotate(33deg) !important;
+  -moz-transform: rotate(33deg) !important;
+  transform: rotates(33deg) !important;
+  top: -17px;
+}
+
+.frog .toes.right {
+  -webkit-transform: rotate(-33deg) !important;
+  -ms-transform: rotate(-33deg) !important;
+  -moz-transform: rotate(-33deg) !important;
+  transform: rotates(-33deg) !important;
+  top: -17px;
+}
+
+div#swamp div.log {
+  height: 100px;
+  width: 400px;
+  background-image: url('log.png');
+  background-size: cover;
+  margin: -95px auto 0px auto;
+}
+
+.frog,
+.frog .head,
+.frog .eye,
+.frog .eye .inner,
+.frog .nose,
+.frog .nose:after,
+.frog .mouth,
+.frog .body,
+.frog .body:after,
+.frog .toes,
+.frog .toes:before,
+.frog .toes:after {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  /* Safari */
+}</style>
+
+<div id="meditation-menu">
+  <div class="frog">
+    <div class="head">
+      <div id="eye1" class="eye left">
+        <div class="inner"></div>
+      </div>
+      <div id="eye2" class="eye right">
+        <div class="inner"></div>
+      </div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+  <h1>Can you find your anchor breath?</h1>
+  <p>Some schools are teaching mindfulness to help kids calm down by finding their anchor breath, which is breathing through your belly. Try this excercise to see how mindfulness can
+    help you too!</p>
+  <div id="start-meditation">Start Meditation</div>
+</div>
+
+<div id="swamp">
+  <h1 id="meditation-msg">Loading...</h1>
+  <div class="frog" id="frog">
+    <div class="head">
+      <div id="eye1" class="eye left">
+        <div id="pupil1" class="inner"></div>
+      </div>
+      <div id="eye2" class="eye right">
+        <div id="pupil2" class="inner"></div>
+      </div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
+    </div>
+    <div class="body"></div>
+    <div class="toes left"></div>
+    <div class="toes right"></div>
+  </div>
+  <div class="log"></div>
+  <a id="close-meditation" href="https://www.deseretnews.com/article/900006177/take-a-breathe-schools-addressing-depression-anxiety-with-mindfulness.html">Return To Article</a>
+</div>
+
+<script>
+  (function () {
+    // build vars
+    var mouseOverFrog = false;
+    var frog = {
+      x: document.getElementById('frog').offsetLeft,
+      y: document.getElementById('frog').offsetTop
+    };
+    var messages = [
+      'Practice breathing through your belly...',
+      'Follow the pace of the frog...',
+      'Pay attention to how your body feels...'
+    ];
+    var messageAnimation;
+    currentMessage = 0;
+    fadeOut = true;
+    count = 0;
+    // track frog position
+    document.onscroll = function () {
+      frog.x = document.getElementById('frog').offsetLeft;
+      frog.y = document.getElementById('frog').offsetTop
+    }
+    // start meditation btn 
+    document.getElementById('start-meditation').onclick = function () {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      count = 0;
+      currentMessage = 0;
+      document.getElementById('meditation-msg').innerText = messages[currentMessage];
+      document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+      document.getElementById('meditation-menu').style.display = 'none';
+      document.getElementById('swamp').style.display = 'block';
+      messageAnimation = setInterval(function () {
+        document.getElementById('meditation-msg').style.color = '#000';
+        if (fadeOut) {
+          fadeOut = false;
+          document.getElementById('meditation-msg').style.animation = 'fadeOut 3s normal forwards ease-in-out';
+        } else {
+          fadeOut = true;
+          currentMessage++;
+          if (currentMessage === messages.length) {
+            clearInterval(messageAnimation);
+            var counting = setInterval(function () {
+              count++;
+            }, 1000);
+            document.getElementById('meditation-msg').style.color = '#fff';
+            document.getElementById('meditation-msg').innerText = 'Breathe...';
+            document.getElementById('swamp').onmousemove = function () {
+              clearInterval(counting);
+              document.getElementById('meditation-msg').style.color = '#000';
+              document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+              document.getElementById('meditation-msg').innerHTML = 'Do you feel calm now?<br />Did you find your anchor breath?';
+            }
+          } else {
+            document.getElementById('meditation-msg').style.animation = 'fadeIn 3s normal forwards ease-in-out';
+            document.getElementById('meditation-msg').innerText = messages[currentMessage];
+          }
+        }
+      }, 5000);
+    }
+
+    document.getElementById('close-meditation').onclick = function () {
+      document.getElementById('meditation-menu').style.display = 'block';
+      document.getElementById('swamp').style.display = 'none';
+      document.getElementById('swamp').onmousemove = undefined;
+    }
+    // event listener for mouse
+    document.onmousemove = function (event) {
+      frog.x = document.getElementById('frog').offsetLeft;
+      frog.y = document.getElementById('frog').offsetTop;
+      // build vars
+      var mouse = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      if (mouseOverFrog) {
+        document.getElementById('pupil1').style.marginLeft = '10px';
+        document.getElementById('pupil2').style.marginLeft = '10px';
+        document.getElementById('pupil1').style.marginTop = '10px';
+        document.getElementById('pupil2').style.marginTop = '10px';
+      } else {
+        // set side to side
+        if (mouse.x > frog.x) {
+          document.getElementById('pupil1').style.marginLeft = '20px';
+          document.getElementById('pupil2').style.marginLeft = '20px';
+        } else if (mouse.x < frog.x) {
+          document.getElementById('pupil1').style.marginLeft = '0px';
+          document.getElementById('pupil2').style.marginLeft = '0px';
+        }
+        // set vertical
+        if (mouse.y < frog.y) {
+          document.getElementById('pupil1').style.marginTop = '0px';
+          document.getElementById('pupil2').style.marginTop = '0px';
+        } else if (mouse.y > frog.y) {
+          document.getElementById('pupil1').style.marginTop = '20px';
+          document.getElementById('pupil2').style.marginTop = '20px';
+        }
+      }
+    }
+    document.getElementById('frog').onmouseover = function () {
+      mouseOverFrog = true;
+    }
+    document.getElementById('frog').onmouseout = function () {
+      mouseOverFrog = false;
+    }
+  })();
+</script>
